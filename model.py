@@ -51,7 +51,7 @@ class ScalePrediction(nn.Module):
     def __init__(self, in_channels, num_classes):
         super().__init__()
         self.pred = nn.Sequential(
-            CNNBlock(in_channels, 2*in_channels, kernel_size=3, padding=1)
+            CNNBlock(in_channels, 2*in_channels, kernel_size=3, padding=1),
             CNNBlock(2*in_channels, (num_classes + 5) * 3, bn_act=False, kernel_size=1),
         )
         self.num_classes = num_classes
