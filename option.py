@@ -16,7 +16,7 @@ def parse_args():
 
     # dataset
     parser.add_argument("--data_dir", type=str, default="./datasets/")
-    parser.add_argument("--data_name", type=str, default='voc')
+    parser.add_argument("--data_name", type=str, default='PASCAL_VOC')
 
     # training setting
     parser.add_argument("--lr", type=float, default=1e-5)
