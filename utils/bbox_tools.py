@@ -55,15 +55,13 @@ def get_evaluation_bboxes(
     iou_threshold,
     anchors,
     threshold,
-    box_format="midpoint",
     device="cuda",
 ):
     # make sure model is in eval before get bboxes
-    model.eval()
-    train_idx = 0
+    eval_idx = 0
     all_pred_boxes = []
     all_true_boxes = []
-    for batch_idx, (x, labels) in enumerate(tqdm(loader)):
+    for _, (x, labels) in enumerate(loader):
         x = x.to(device)
 
         with torch.no_grad():
@@ -89,20 +87,18 @@ def get_evaluation_bboxes(
             nms_boxes = non_max_suppression(
                 bboxes[idx],
                 iou_threshold=iou_threshold,
-                threshold=threshold,
-                box_format=box_format,
+                threshold=threshold
             )
 
             for nms_box in nms_boxes:
-                all_pred_boxes.append([train_idx] + nms_box)
+                all_pred_boxes.append([eval_idx] + nms_box)
 
             for box in true_bboxes[idx]:
                 if box[1] > threshold:
-                    all_true_boxes.append([train_idx] + box)
+                    all_true_boxes.append([eval_idx] + box)
 
-            train_idx += 1
+            eval_idx += 1
 
-    model.train()
     return all_pred_boxes, all_true_boxes
 
 def cells_to_bboxes(predictions, anchors, S, is_preds=True):
@@ -163,6 +159,6 @@ def plot_couple_examples(model, loader, thresh, iou_thresh, anchors):
 
     for i in range(batch_size):
         nms_boxes = non_max_suppression(
-            bboxes[i], iou_threshold=iou_thresh, threshold=thresh, box_format="midpoint",
+            bboxes[i], iou_threshold=iou_thresh, threshold=thresh
         )
         plot_image(x[i].permute(1,2,0).detach().cpu(), nms_boxes)

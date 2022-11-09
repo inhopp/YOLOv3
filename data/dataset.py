@@ -15,12 +15,8 @@ class Dataset(data.Dataset):
         self.transform = transform
 
         self.ignore_iou_thresh = 0.5
-        self.S = [self.img_size//32, self.img_size//16, self.img_size//8]
-        self.Anchors = [ # Note these have been rescaled to be between [0, 1]
-            (0.28, 0.22), (0.38, 0.48), (0.9, 0.78),
-            (0.07, 0.15), (0.15, 0.11), (0.14, 0.29),
-            (0.02, 0.03), (0.04, 0.07), (0.08, 0.06),
-        ] 
+        self.S = opt.S
+        self.Anchors = opt.Anchors
         self.C = opt.num_classes
 
         self.img_names = list()
