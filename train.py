@@ -93,8 +93,8 @@ class Solver():
                 self.best_mAP, self.best_epoch = mAP, epoch
                 self.save()
 
-            print("Epoch [{}/{}] Loss: {:.3f}, Val mAP: {:.3f}".format(epoch+1, opt.n_epoch, sum(mean_loss)/len(mean_loss), mean_avg_prec))
-            print("Best : {:.2f} @ {}".format(self.best_mAP, self.best_epoch+1))
+            print("Epoch [{}/{}] Loss: {:.3f}, Val mAP: {:.3f}".format(epoch+1, opt.n_epoch, mean_loss, mAP))
+            print("Best mAP & epch : {:.2f} @ {}".format(self.best_mAP, self.best_epoch+1))
 
 
     def save(self):

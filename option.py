@@ -15,7 +15,7 @@ def parse_args():
     parser.add_argument("--nms_iou_threshold", type=float, default=0.45)
 
     # dataset
-    parser.add_argument("--data_dir", type=str, default="./datasets/")
+    parser.add_argument("--data_dir", type=str, default="./datasets")
     parser.add_argument("--data_name", type=str, default='PASCAL_VOC')
 
     # training setting
