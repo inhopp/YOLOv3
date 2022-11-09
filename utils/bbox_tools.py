@@ -1,14 +1,18 @@
-import config
 import torch
+import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 from utils.nms import non_max_suppression
 
-def plot_image(image, boxes):
+def plot_image(image, boxes, opt):
     """Plots predicted bounding boxes on the image"""
+    class_labels = []
+    with open(os.path.join(opt.data_dir, opt.data_name, 'label.txt'), 'r') as f:
+        lines = f.readlines()
+        class_labels.append(lines)
+
     cmap = plt.get_cmap("tab20b")
-    class_labels = config.COCO_LABELS if config.DATASET=='COCO' else config.PASCAL_CLASSES
     colors = [cmap(i) for i in np.linspace(0, 1, len(class_labels))]
     im = np.array(image)
     height, width, _ = im.shape
