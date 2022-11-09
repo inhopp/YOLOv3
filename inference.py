@@ -27,7 +27,7 @@ def inference(opt):
                 iou_threshold=opt.nms_iou_threshold, 
                 class_threshold=opt.conf_threshold
             )
-            plot_image(img[idx].to("cpu"), nms_bboxes)
+            plot_image(img[idx].to("cpu"), nms_bboxes, opt)
 
 
 if __name__ =='__main__':
