@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
+from tqdm import tqdm
 from utils.nms import non_max_suppression
 
 def plot_image(image, boxes, opt):
@@ -65,7 +66,7 @@ def get_evaluation_bboxes(
     eval_idx = 0
     all_pred_boxes = []
     all_true_boxes = []
-    for _, (x, labels) in enumerate(loader):
+    for _, (x, labels) in enumerate(tqdm(loader)):
         x = x.to(device)
 
         with torch.no_grad():
