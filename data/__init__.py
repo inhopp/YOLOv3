@@ -24,7 +24,7 @@ def generate_loader(phase, opt):
                 A.ColorJitter(brightness=0.6, contrast=0.6, saturation=0.6, hue=0.6, p=0.4),
                 A.OneOf(
                     [A.ShiftScaleRotate(rotate_limit=20, p=0.5, border_mode=cv2.BORDER_CONSTANT),
-                     A.Affine(shear=15, p=0.5, mode="constant")],
+                     A.Affine(shear=15, p=0.5)],
                      p=1.0
                      ),
                 A.HorizontalFlip(p=0.5),

@@ -57,9 +57,9 @@ class Solver():
 
                 preds = self.model(img)
                 loss = (
-                    self.loss_fn([preds[0], y0, self.scaled_anchors[0]])
-                    + self.loss_fn([preds[1], y1, self.scaled_anchors[1]])
-                    + self.loss_fn([preds[2], y2, self.scaled_anchors[2]])
+                    self.loss_fn(preds[0], y0, self.scaled_anchors[0])
+                    + self.loss_fn(preds[1], y1, self.scaled_anchors[1])
+                    + self.loss_fn(preds[2], y2, self.scaled_anchors[2])
                 )
 
                 losses.append(loss.item())

@@ -56,7 +56,7 @@ class Dataset(data.Dataset):
             has_anchor = [False] * 3
 
             for anchor_idx in anchor_indices:
-                scale_idx = anchor_idx // 3
+                scale_idx = torch.div(anchor_idx, 3, rounding_mode='floor')
                 anchor_on_scale = anchor_idx % 3
                 S = self.S[scale_idx]
                 i, j = int(S * y), int(S * x) # from (0~1) to integer cell location
