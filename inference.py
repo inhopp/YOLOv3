@@ -7,7 +7,7 @@ from utils.bbox_tools import plot_image, cells_to_bboxes
 from utils.nms import non_max_suppression
 
 def inference(opt):
-    dev = dev = torch.device("cuda:{}".format(opt.gpu) if torch.cuda.is_available() else "cpu")
+    dev = torch.device("cuda:{}".format(opt.gpu) if torch.cuda.is_available() else "cpu")
 
     data_loader = generate_loader('test', opt)
     print("data load complete")
