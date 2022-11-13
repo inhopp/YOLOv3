@@ -10,7 +10,7 @@ def parse_args():
     # models
     parser.add_argument("--pretrained", type=bool, default=False)
     parser.add_argument("--input_size", type=int, default=416) 
-    parser.add_argument("--conf_threshold", type=float, default=0.05)
+    parser.add_argument("--conf_threshold", type=float, default=0.25)
     parser.add_argument("--map_iou_threshold", type=float, default=0.5)
     parser.add_argument("--nms_iou_threshold", type=float, default=0.45)
 

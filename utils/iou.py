@@ -8,7 +8,8 @@ def iou_width_height(boxes1, boxes2):
 
 
 def intersection_over_union(boxes_preds, boxes_labels):
-
+    '''boxes_preds & boxes_labels : tensor'''
+    
     box1_x1 = boxes_preds[..., 0:1] - boxes_preds[..., 2:3] / 2
     box1_y1 = boxes_preds[..., 1:2] - boxes_preds[..., 3:4] / 2
     box1_x2 = boxes_preds[..., 0:1] + boxes_preds[..., 2:3] / 2
